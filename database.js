@@ -18,31 +18,28 @@ for(let type in loadedDatabase) {
     const currentTypeArray = loadedDatabase[type]
     currentTypeArray.forEach(itemInArray => {
         const itemSection = document.createElement('section')
-        const nameP = document.createElement('p')
-        nameP.textContent = itemInArray.name
-        itemSection.appendChild(nameP)
-
-        const locationP = document.createElement('p')
-        locationP.textContent = itemInArray.location 
-        itemSection.appendChild(locationP)
-
-        const descP = document.createElement('p')
-        descP.textContent = itemInArray.description
-        itemSection.appendChild(descP)
-        
+    
+    for(let prop in itemInArray) => {
+        const pComponent = document.createElement('p')
+        pComponent.textContent = itemInArray[prop]
+        itemSection.appendChild(nameP)      
         dataIteration.appendChild(itemSection)
+    }
     });
 }
 
-// That component itself should contain three <p> components. One for the name, location, and description.
-// Attach the p components as children of the section.
-// Attach the section as a child of the article.
+// // 
+// for (let type in HomeInventoryDatabase) {
+//     const currentTypeArray = HomeInventoryDatabase[type]
 
-// function dump_props(obj, obj_name) {
-//     var result = '';
-//     for (var i in obj) {
-//       result += obj_name + '.' + i + ' = ' + obj[i] + '<br>';
-//     }
-//     result += '<hr>';
-//     return result;
-//   }
+//     currentTypeArray.forEach(itemInArray => {
+//         const itemSection = document.createElement("section")
+
+//         for (let prop in itemInArray) {
+//             const pComponent = document.createElement("p")
+//             pComponent.textContent = itemInArray[prop]
+//             itemSection.appendChild(pComponent)
+//             inventoryEl.appendChild(itemSection)
+//         }
+
+//     });
