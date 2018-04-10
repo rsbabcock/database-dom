@@ -11,13 +11,29 @@ const loadDatabase = function (localStorageKey) {
 const loadedDatabase = loadDatabase("Home Inventory")
 // console.log(loadedDatabase);
 // Iterate over every data set in the database and create a <section> component.
-let dataIteration = ""
+const dataIteration = document.querySelector('#myStuff')
+
 for(let type in loadedDatabase) { 
-    console.log(loadedDatabase)
-    for(let item in loadedDatabase[type]) {
-        console.log(loadedDatabase[type][item].name)
-    }
+// current type holds the array in homeinventory database
+    const currentTypeArray = loadedDatabase[type]
+    currentTypeArray.forEach(itemInArray => {
+        const itemSection = document.createElement('section')
+        const nameP = document.createElement('p')
+        nameP.textContent = itemInArray.name
+        itemSection.appendChild(nameP)
+
+        const locationP = document.createElement('p')
+        locationP.textContent = itemInArray.location 
+        itemSection.appendChild(locationP)
+
+        const descP = document.createElement('p')
+        descP.textContent = itemInArray.description
+        itemSection.appendChild(descP)
+        
+        dataIteration.appendChild(itemSection)
+    });
 }
+
 // That component itself should contain three <p> components. One for the name, location, and description.
 // Attach the p components as children of the section.
 // Attach the section as a child of the article.
